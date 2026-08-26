@@ -95,7 +95,7 @@ progress_error  = { fg = "#f7768e", bg = "#292e42" }
 # : Which {{{
 
 [which]
-border          = { fg = "blue" }
+border          = { fg = "#414868" }
 cols            = 3
 mask            = { bg = "#414868" }
 cand            = { fg = "#9ece6a" }
