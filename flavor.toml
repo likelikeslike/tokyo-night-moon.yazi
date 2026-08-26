@@ -1,4 +1,3 @@
-
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # : Manager {{{
@@ -10,11 +9,15 @@ cwd = { fg = "#7aa2f7" }
 find_keyword  = { fg = "#f7768e", bold = true, italic = true, underline = true }
 find_position = { fg = "#bb9af7", bg = "reset", bold = true, italic = true }
 
+# Symlink
+symlink_target = { italic = true }
+
 # Marker
 marker_copied   = { fg = "#9ece6a", bg = "#9ece6a" }
 marker_cut      = { fg = "#e0af68", bg = "#f7768e" }
 marker_marked   = { fg = "#7aa2f7", bg = "#7dcfff" }
 marker_selected = { fg = "#e0af68", bg = "#e0af68" }
+marker_symbol   = "│"
 
 # Count
 count_copied   = { fg = "#1a1b26", bg = "#9ece6a" }
@@ -25,24 +28,16 @@ count_selected = { fg = "#1a1b26", bg = "#7aa2f7" }
 border_symbol = "│"
 border_style  = { fg = "#414868" }
 
-# : }}}
-
-
-# : indicator {{{
-
-[indicator]
-padding = { open = "█", close = "█" }
-
-# : }}}
-
 
 # : Tabs {{{
 
 [tabs]
-active    = { fg = "#292e42", bg = "#7aa2f7", bold = true }
-inactive  = { fg = "#7aa2f7", bg = "#292e42" }
-sep_outer = { open = "", close = "" }
+active   = { fg = "#292e42", bg = "#7aa2f7", bold = true }
+inactive = { fg = "#7aa2f7", bg = "#292e42" }
+
+# Separator
 sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
 
 # : }}}
 
@@ -50,7 +45,6 @@ sep_inner = { open = "", close = "" }
 # : Mode {{{
 
 [mode]
-
 normal_main = { fg = "#292e42", bg = "#7aa2f7", bold = true }
 normal_alt  = { fg = "#7aa2f7", bg = "#292e42" }
 
@@ -65,17 +59,23 @@ unset_alt  = { fg = "#7aa2f7", bg = "#292e42" }
 # : }}}
 
 
+# : Indicator of hovered file {{{
+
+[indicator]
+parent  = { reversed = true }
+current = { reversed = true }
+preview = { underline = true }
+padding = { open = "█", close = "█" }
+
+# : }}}
+
+
 # : Status bar {{{
 
 [status]
 overall   = { fg = "#7aa2f7" }
 sep_left  = { open = "█", close = "" }
 sep_right = { open = "", close = "█" }
-
-# Progress
-progress_label  = { fg = "#292e42", bold = true }
-progress_normal = { fg = "#7aa2f7", bg = "#292e42" }
-progress_error  = { fg = "#f7768e", bg = "#292e42" }
 
 # Permissions
 perm_sep   = { fg = "#7aa2f7" }
@@ -84,10 +84,72 @@ perm_read  = { fg = "#e0af68" }
 perm_write = { fg = "#f7768e" }
 perm_exec  = { fg = "#bb9af7" }
 
+# Progress
+progress_label  = { fg = "#292e42", bold = true }
+progress_normal = { fg = "#7aa2f7", bg = "#292e42" }
+progress_error  = { fg = "#f7768e", bg = "#292e42" }
 
 # : }}}
 
-# : Pick {{{
+
+# : Which {{{
+
+[which]
+border          = { fg = "blue" }
+cols            = 3
+mask            = { bg = "#414868" }
+cand            = { fg = "#9ece6a" }
+rest            = { fg = "#a9b1d6" }
+desc            = { fg = "#bb9af7" }
+separator       = "  "
+separator_style = { fg = "#626880" }
+
+# : }}}
+
+
+# : Confirmation {{{
+
+[confirm]
+border     = { fg = "blue" }
+title      = { fg = "blue" }
+body       = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = ["  [Y]es  ", "  (N)o  "]
+
+# : }}}
+
+
+# : Spotter {{{
+
+[spot]
+border = { fg = "#7aa2f7" }
+title  = { fg = "#7aa2f7" }
+
+# Table
+tbl_col  = { fg = "#9ece6a" }
+tbl_cell = { fg = "#bb9af7", bg = "#292e42" }
+
+# : }}}
+
+
+# : Notification {{{
+
+[notify]
+title_info  = { fg = "#9ece6a" }
+title_warn  = { fg = "#f7768e" }
+title_error = { fg = "#e0af68" }
+
+# Icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# : }}}
+
+
+# : Picker {{{
 
 [pick]
 border   = { fg = "#7aa2f7" }
@@ -111,12 +173,19 @@ selected = { reversed = true }
 # : Completion {{{
 
 [cmp]
-border = { fg = "#7aa2f7" }
+border   = { fg = "#7aa2f7" }
+active   = { reversed = true }
+inactive = {}
+
+# Icons
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
 
 # : }}}
 
 
-# : Tasks {{{
+# : Task manager {{{
 
 [tasks]
 border  = { fg = "#7aa2f7" }
@@ -126,47 +195,14 @@ hovered = { fg = "#bb9af7", underline = true }
 # : }}}
 
 
-# : Which {{{
-
-[which]
-mask            = { bg = "#414868" }
-cand            = { fg = "#9ece6a" }
-rest            = { fg = "#a9b1d6" }
-desc            = { fg = "#bb9af7" }
-separator       = "  "
-separator_style = { fg = "#626880" }
-
-# : }}}
-
-
-# : Help {{{
+# : Help menu {{{
 
 [help]
-on      = { fg = "#9ece6a" }
-run     = { fg = "#bb9af7" }
+border  = { fg = "blue" }
+chord   = { fg = "#9ece6a" }
+action  = { fg = "#bb9af7" }
 hovered = { reversed = true, bold = true }
 footer  = { fg = "#1a1b26", bg = "#a9b1d6" }
-
-# : }}}
-
-
-# : Spotter {{{
-
-[spot]
-border   = { fg = "#7aa2f7" }
-title    = { fg = "#7aa2f7" }
-tbl_col  = { fg = "#9ece6a" }
-tbl_cell = { fg = "#bb9af7", bg = "#292e42" }
-
-# : }}}
-
-
-# : Notify {{{
-
-[notify]
-title_info  = { fg = "#9ece6a" }
-title_warn  = { fg = "#f7768e" }
-title_error = { fg = "#e0af68" }
 
 # : }}}
 
@@ -174,7 +210,6 @@ title_error = { fg = "#e0af68" }
 # : File-specific styles {{{
 
 [filetype]
-
 rules = [
   # Images
   { mime = "image/*", fg = "#e0af68" },
@@ -208,8 +243,12 @@ rules = [
   { url = "*/", fg = "#7aa2f7" },
 ]
 
-[icon]
+# : }}}
 
+
+# : Icons {{{
+
+[icon]
 prepend_dirs = [
   { name = ".config", text = "", fg = "#7aa2f7" },
   { name = ".git", text = "", fg = "#7aa2f7" },
@@ -228,5 +267,4 @@ prepend_dirs = [
 ]
 
 prepend_conds = [{ if = "dir", text = "", fg = "#7aa2f7" }]
-
 # : }}}
